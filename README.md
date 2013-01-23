@@ -13,7 +13,7 @@ I implemented a Kalman filter for each of these architectures and introduced a t
 
 
 ### The Experiments
-We needed experiments that were repeatable and where there was true-north location knowledge so we could measure the error of our systems.  Our team built a train that ran around on a track that had both turns and straight-ways.  The true location of the train was measured using a track counter -- an infared optical sensor that watched each track as it went by.
+We needed experiments that were repeatable and where there was true-north location knowledge so we could measure the error of our systems.  Our team built a train that ran around on a track that had both turns and straight-ways.  The true location of the train was measured using a track counter -- an infared optical sensor that watched each track as it went by.  (You can see it on the right hand side train car in the picture below.)
 
 There's a _lot_ of work in getting a system like this going.  You have to set up your coordinate system, including knowing the location of the fixed nodes, and each train track position.  Each day you have to make sure something didn't get moved overnight by the cleaning staff, etc.  We ran 18 individual trials while writing this paper.  I got pretty good at it!
 
