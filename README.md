@@ -5,9 +5,9 @@ This is the code and experimental data behind the paper [_Tracking Moving Device
 
 
 #### Brief Summary
-GPS doesn't work indoors, so in the year 2000 MIT created a project called Cricket.  It's a system where a device can send ultrasound and radio signals at the same time, so that any receiver can measure its distance to the sender based on the time difference of arrival of the two signals.  (Speed travels about one foot per millisecond, and you can assume here that light/radio travel instintaneously.)
+GPS doesn't work indoors, so in the year 2000 MIT created a project called [Cricket](http://cricket.csail.mit.edu).  It's a system where a device can send ultrasound and radio signals at the same time, so that any receiver can measure its distance to the sender based on the time difference of arrival of the two signals.  (Sound travels about one foot per millisecond, and you can assume here that radio travels instintaneously.)
 
-So the idea is you put a bunch of transmitters at fixed points, and a mobile device can know where it is based on these measurements.  OR you can invert the system and have the moving devices send signals which get collected simultaneously at the fixed nodes.  Each of these systems presents different challenges and tradeoffs.
+So the idea is you put a bunch of transmitters at fixed points, and a mobile device can know where it is based on these measurements.  OR you can invert the system and have the moving devices send signals which get collected at the fixed nodes.  Each of these "architectures" present different challenges and tradeoffs.
 
 I implemented a Kalman filter for each of these architectures and introduced a third architecture: a hybrid system that can switch between the _active mobile_ and _passive mobile_ architectures dynamically to take advantage of both.
 
