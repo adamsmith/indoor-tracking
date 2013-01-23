@@ -1,0 +1,36 @@
+
+% we have 'r' points which are fixed (probably on the track) and have known
+% coordinates.  For each 'r' we have r_coord (r x 3)
+
+% expg_r = (each 'r', measurement record (___, ___, distance, FNid))
+r_dists = zeros(size(r_coord,1),size(FNid,1));
+
+for i=1:size(r_coord,1)  % for every 'r'
+    for j=1:size(FNid,1)  % for every beacon
+        tmp = zeros(1,1);
+        cnt = 1;
+        for k=1:size(expg_r,2)  % for every record
+            if expg_r(i,k,4) == FNid(j)  % find each record for this 'r' from beacon 'j'
+                tmp(cnt) = expg_r(i,k,3);
+                cnt=cnt+1;
+            end
+        end
+        if j==3
+%             figure; cdfplot(tmp);
+        end
+        r_dists(i,j) = median(tmp);  % find the median distance to beacon 'j' at this point r[i]
+    end
+end
+
+yo1=r_dists(:,3);
+newmeas = [106; 104.5; 124.5; 126.5; 78.5; 103.5; 82.5; 183; 193.5; 105.0; 128; 141.5] .* 2.54;
+yo2=newmeas;
+for i=1:6
+%     r_dists(i,3) = newmeas(i);
+end
+
+for i=1:size(FNid)
+    % beacons is (4 x 3) (rows are points and columns are coordinates)
+    % dists is (4 x 1) (rows are distances to points)
+    c(i,1:2) = LSQNONLIN(@nonlin_err_zero,c(i,1:2),[],[],optimset('Jacobian','on'),r_coord,r_dists(:,i));
+end

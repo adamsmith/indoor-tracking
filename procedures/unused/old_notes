@@ -1,0 +1,136 @@
+Added complexity but (in theory) better results:
+-PVA -or- multi-modal (run various possibilities and choose one w/ lowest residual)
+--are these two methods orthagonal?
+-assumption we're in plane defined by last three non-colinear positions
+
+
+problems:
+
+not rejecting real outlier because of override
+switching to LinLS when not necessary
+
+simulator facelift
+-stimulus files for batchmode?
+-log/event output files?
+
+
+if detect bad state, only switch to LinLS model IF its residuals for last measurement are better than yours
+
+if you are pathologically rejecting measurements then you will "diverge" since you step according to your idea of the velocity
+
+
+
+
+
+
+
+
+
+
+    if rand(1) < .025
+        % feed in outlier
+        z(1,beac_chirp) = normrnd(getrealdist(beac_chirp,c,x(1,1:3))+100,50^2);
+    else
+        % feed in gaussian-distributed error
+        z(1,beac_chirp) = normrnd(getrealdist(beac_chirp,c,x(1,1:3)),1);
+    end
+
+(above)[Q(4,:,:) R(4,:) P(4,:,:) G(4,:,:) D(4,:) U(4,:,:) bufsize(4) chireject(4) chisuspect(4) chiPRbuffersize(4) chiBEbuffersize(4) chiPRratio(4) chiBEratio(4) modeltype(4) R0(4) Rstep(4)] = populate_PVmodel_standard(m,dT,14.3301,1,40,20,10,10,.4,.4,PVmodel_standard,9.08,.05);%9,3.5,15,15,0.4,0.4,PVmodel_standard,9.08,.05);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# J. Vaganay, J. J. Leonard, and J. G. Bellingham. Outlier Rejection for Autonomous Acoustic Navigation. 
+In Proc. IEEE International Conference on Robotics and Automation, pages 2174-2181, Minneapolis, Minnesota, April, 1996.
+
+
+Tsay, R. S. (1988). "Outliers, Level Shifts, and Variance
+Changes in Time Series." Journal of Forecasting, 7: 1-20.
+
+
+
+
+
+"The EKF filter is a little smarter and uses its current state estimate and uncertainty
+to identify that the current crop of observations are not mutually consistent either with
+themselves or with the last state estimate (a common technique in Kalman filtering).
+However having detected that at least one of the current sensor measurement makes no
+sense it employs geometric projective techniques to identify the true outlier."
+(uses listener as chirper scheme)
+(runs GPS, LSQ, and EKF)
+"Robustness --- A poorly tuned/setup EKF can diverge - that is, produce a state estimate
+so far from the truth and with sufficient confidence that it rejects all incoming
+sensor data. There is no reason that this should happen given the data rejection
+schemes employed, however navigation is stochastic and unlikely things will hap-
+pen given time. A deployed system should be robust to such occurrences and the
+checking of estimates against the LSQ filter offers one (of several employed) way
+to do this. If the estimates emerging from the LSQ differ significantly from those
+emerging from the EKF over a sustained interval pNav takes the EKF off-line and
+attempts to re-initialize it to the LSQ estimates. We require a lack of consensus
+over several seconds/fixes to prevent spurious LSQ fixes pulling the plug on the
+EKF prematurely. This also accords with the observation that once the EKF has
+diverged it is unlikely to recover and so waiting a few seconds is not going to
+change anything."
+-
+MOOS - Mission Orientated Operating Suite, 
+Paul Michael Newman
+Department of Ocean Engineering
+Massachusetts Institute of Technology
+
+
+"Another statistical technique that is useful with many data is known as jack-
+knifing. Each datum is removed from the set, and the goodness of fit calculated to
+the remaining data. If the goodness of fit without some datum d is substantially
+lower, then d is removed as an outlier. "
+Bottom of page: "6.  Currently TrenDx doesnot remove outliers. The techniques described here are straightforward
+extensions."
+Knowledge-Based Trend Detection 
+and Diagnosis
+by
+Ira Joseph Haimowitz
+June, 1994
+ 1994 Massachusetts Institute of Technology. All rights reserved.
+
+Offline data smoothing?  See "An Integrated System for Underwhater Navigation and Tracking," Matos, Cruz, Pereira, 2000, section 4
+
+
+ 
+ 
+online
+books

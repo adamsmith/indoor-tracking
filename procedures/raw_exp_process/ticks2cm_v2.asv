@@ -1,0 +1,23 @@
+% NE43-518: .0343 - 118.1147
+% Stata1: 0.0345 -119.9447
+% Stata2: 0.0333 -114.9319
+% Stata3: 0.0332 -116.8807
+% Stata4: 0.0332 -116.8640
+% Stata5: 0.0348 -126.6940
+
+for i=1:size(expg_r,1)
+    for j=1:size(expg_r,2)
+        if expg_r(i,j,3) > 0
+            expg_r(i,j,3) = 0.0348*expg_r(i,j,3) - 126.6940;
+        end
+    end
+end
+
+
+% for i=1:size(expg_r,1)
+%     for j=1:size(expg_r,3)
+%         if expg_r(i,3,j) > 0
+%             expg_r(i,3,j) = 0.0345*expg_r(i,3,j) - 119.9447;
+%         end
+%     end
+% end
