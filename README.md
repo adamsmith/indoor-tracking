@@ -1,7 +1,7 @@
 indoor-tracking
 ===============
 
-This is the code and experimental data behind my paper [_Tracking Moving Devices with the Cricket Location System_](http://scholar.google.com/scholar?q=Tracking+moving+devices+with+the+cricket+location+system) (Mobisys 2004).
+This is the code and experimental data behind the paper [_Tracking Moving Devices with the Cricket Location System_](http://scholar.google.com/scholar?q=Tracking+moving+devices+with+the+cricket+location+system) (Smith et al, Mobisys 2004).
 
 
 #### Brief Summary
